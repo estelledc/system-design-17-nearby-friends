@@ -1,0 +1,45 @@
+{
+  "name": "system-design-17-nearby-friends",
+  "version": "0.1.0",
+  "description": "Authorized expiring nearby presence with durable refresh cursors and lossy Redis wakeups",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/main.js serve",
+    "worker": "node src/worker-main.js serve",
+    "lint": "node scripts/repo-check.mjs",
+    "test": "node --test --test-reporter=spec test/unit/*.test.js",
+    "test:infra": "node --test --test-reporter=spec test/integration/*.test.js",
+    "smoke:infra": "node scripts/infra-smoke.mjs",
+    "benchmark:infra": "node scripts/infra-benchmark.mjs",
+    "audit": "npm audit --audit-level=high",
+    "check": "npm run lint && npm test && npm run audit",
+    "check:ci": "npm run check && npm run test:infra && npm run smoke:infra && npm run benchmark:infra"
+  },
+  "dependencies": {
+    "pg": "8.23.0",
+    "redis": "6.2.1"
+  },
+  "keywords": [
+    "system-design",
+    "nearby-friends",
+    "postgis",
+    "redis-pubsub",
+    "durable-cursor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estelledc/system-design-17-nearby-friends.git"
+  },
+  "bugs": {
+    "url": "https://github.com/estelledc/system-design-17-nearby-friends/issues"
+  },
+  "homepage": "https://github.com/estelledc/system-design-17-nearby-friends#readme",
+  "license": "MIT"
+}
