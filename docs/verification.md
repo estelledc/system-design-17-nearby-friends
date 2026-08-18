@@ -29,5 +29,34 @@ The final public run must have zero skips and demonstrate:
 
 ## Public receipts
 
-Pending the first public CI run. Commit hashes, run IDs, exact test counts, service versions, smoke state, and per-runtime benchmark
-observations will be recorded here only after GitHub reports the immutable run result.
+Implementation commit: `3334ea38358187a4b7d0eb776f37243a3aa5f5f2`.
+
+Public run: [32186626058](https://github.com/estelledc/system-design-17-nearby-friends/actions/runs/32186626058), completed
+successfully on 2026-08-18 UTC.
+
+Every Node job reported:
+
+- repository policy/syntax/link gate over 40 files;
+- 19/19 pure tests, zero fail/skip;
+- high-severity dependency audit with zero vulnerabilities;
+- 10/10 real infrastructure tests, zero fail/skip;
+- PostgreSQL 17.11, PostGIS 3.5.7, and Redis 7.4.10;
+- a true-process smoke with committed location response loss recovered, duplicate publish-before-mark wake observed, missed
+  zero-subscriber wake recovered by cursor, final revision 9, two sent wake rows, and maximum publish attempts 2;
+- zero remote-device, map, co-presence, meeting, safety, consent, or external-acceptance claims.
+
+## Bounded benchmark observations
+
+The exact fixture was 20 isolated viewer/sharer pairs, one active session per pair, eight measured location updates per sharer,
+160 no-subscriber Redis wake publishes, and one final drain per viewer. It used one API process path, one PostgreSQL instance, one
+Redis instance, no network clients, no subscribers, no concurrency/load generator, and no production extrapolation.
+
+| Runtime | Seed ms | Update ops/s | Update p50/p95/max ms | Wake publishes/s | Drain ops/s | Drain p50/p95/max ms |
+|---|---:|---:|---:|---:|---:|---:|
+| Node 22.23.2 | 681.697 | 146.245 | 6.569 / 9.202 / 12.866 | 423.695 | 216.576 | 3.987 / 9.053 / 10.083 |
+| Node 24.19.0 | 721.687 | 125.590 | 7.693 / 11.057 / 15.261 | 343.274 | 215.203 | 4.500 / 5.365 / 5.662 |
+| Node 26.7.0 | 2376.914 | 43.417 | 6.619 / 134.003 / 247.330 | 70.627 | 289.330 | 3.407 / 3.715 / 4.481 |
+
+Each run ended with revision 300, 40 accounts, 20 current presences, 20 sessions, 160 retained events, 160 sent wake rows, 160
+drained events, and 20 current results. The Node 26 tail is a runner observation, not a language-version or capacity conclusion;
+the benchmark has neither repetitions nor controlled machine isolation needed for that inference.

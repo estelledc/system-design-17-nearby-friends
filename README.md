@@ -18,8 +18,10 @@ fixed secondary chapter.
 - true-process hooks for location-commit/response-loss and Redis-publish/outbox-mark crash windows;
 - pure, real-infrastructure, smoke, benchmark, repository-policy, dependency-audit, and Node 22/24/26 CI gates.
 
-The first public CI receipt is pending. Until that run is green, the code and test design are implemented but the real service
-claims remain unverified.
+The implementation commit `3334ea38358187a4b7d0eb776f37243a3aa5f5f2` passed the complete public Node 22/24/26 matrix in
+[CI run 32186626058](https://github.com/estelledc/system-design-17-nearby-friends/actions/runs/32186626058). Each runtime ran 19
+pure tests and 10 real PostgreSQL/PostGIS/Redis tests with zero failures/skips, then the true-process smoke, bounded benchmark, and
+high-severity dependency audit. Exact receipts and limits are in [docs/verification.md](docs/verification.md).
 
 ## Read the system
 
