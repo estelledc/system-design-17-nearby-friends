@@ -11,7 +11,9 @@ fixed secondary chapter.
 ## Current phase
 
 - Closed-book problem contract: [docs/closed-book-contract.md](docs/closed-book-contract.md)
-- Fixed-source comparison, primary-spec corrections, implementation, and public CI: pending
+- Fixed-source comparison: [docs/research-log.md](docs/research-log.md)
+- Architecture decision: [ADR 0001](docs/adr/0001-postgres-authority-and-lossy-redis-wakeups.md)
+- Implementation and public CI: pending
 
 ## Evidence boundary
 
