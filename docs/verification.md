@@ -29,10 +29,13 @@ The final public run must have zero skips and demonstrate:
 
 ## Public receipts
 
-Implementation commit: `3334ea38358187a4b7d0eb776f37243a3aa5f5f2`.
+The identity-safe rewrite preserved every existing tree, message, and timestamp while mapping the four commits in order: `1074341518af5de0f85e6b9125fd2f04550c2aaf` → `4445d8181de0d74c38c2ca5b82ede5e126084a11`, `27439b6694fc4e788acb4ba71bc3fd66325e7de9` → `f2cd902ba3f51604353631d35417943d2b5c8c13`, `3334ea38358187a4b7d0eb776f37243a3aa5f5f2` → `be23aa964ae7902aedde9201de3de78fa78004d4`, and `51701856201e630d43a7c86d743056e4229bf6c4` → `46c16efaeb530d67aceb1c517355dbd8867cb7fe`.
 
-Public run: [32186626058](https://github.com/estelledc/system-design-17-nearby-friends/actions/runs/32186626058), completed
-successfully on 2026-08-18 UTC.
+Implementation commit: `be23aa964ae7902aedde9201de3de78fa78004d4`.
+
+Historical pre-rewrite public run: [32186626058](https://github.com/estelledc/system-design-17-nearby-friends/actions/runs/32186626058), completed successfully on 2026-08-18 UTC. It remains bound to the old commit object but tested the identical tree.
+
+Current reachable `main` uses the repository owner's GitHub noreply identity. Rewritten baseline `46c16efaeb530d67aceb1c517355dbd8867cb7fe` passed [CI run 32226759810](https://github.com/estelledc/system-design-17-nearby-friends/actions/runs/32226759810) on Node 22, 24, and 26 with PostgreSQL 17 / PostGIS 3.5 / Redis 7.4 and the full quality gate.
 
 Every Node job reported:
 
